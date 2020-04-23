@@ -1,0 +1,91 @@
+{% extends 'basiclayout.html'%}
+{%block main%}
+
+    <!-- Main Content -->
+  
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{{url_for('static',filename='lform/images/icons/favicon.ico')}}"/>
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='lform/vendor/bootstrap/css/bootstrap.min.css')}}">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='lform/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='lform/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='lform/vendor/animate/animate.css')}}">
+    <!--===============================================================================================-->	
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='lform/vendor/css-hamburgers/hamburgers.min.css')}}">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='lform/vendor/select2/select2.min.css')}}">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='lform/css/util.css')}}">
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='lform/css/main.css')}}">
+    <!--===============================================================================================-->
+    </head>
+    <body>
+      
+      
+        <div class="container-login100">
+          <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30" style="width: 700px;">
+            <form class="login100-form validate-form"method='POST'>
+              <span class="login100-form-title p-b-55">
+                EDIT POST
+              </span>
+    
+              <div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz">
+                {%if form.title.errors%}
+                  {{form.title(class='form-control form-control-lg is-invalid')}}
+                  <div>
+                    {%for error in form.title.errors%}
+                      <span style="color: red;">{{error}}</span>
+                    {%endfor%}
+                  </div>
+                {%else%}
+                  {{form.title(class='input100')}}
+                {%endif%}
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                  <span class="lnr lnr-envelope"></span>
+                </span>
+              </div>
+
+              <div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz">
+                {%if form.content.errors%}
+                  {{form.content(class='form-control form-control-lg is-invalid')}}
+                  <div>
+                    {%for error in form.content.errors%}
+                      <span style="color: red;">{{error}}</span>
+                    {%endfor%}
+                  </div>
+                {%else%}
+                  {{form.content(class='input100')}}
+                {%endif%}
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                  <span class="lnr lnr-envelope"></span>
+                </span>
+              </div>
+              
+              {{form.csrf_token}}<!--this is for web security-->
+              <div class="container-login100-form-btn p-t-25">
+                {{form.submit(class="login100-form-btn")}}
+              </div>
+            </form>
+          </div>
+        </div>
+      
+      
+      
+    
+      
+    <!--===============================================================================================-->	
+      <script src="{{url_for('static',filename='lform/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+    <!--===============================================================================================-->
+      <script src="{{url_for('static',filename='lform/vendor/bootstrap/js/popper.js')}}"></script>
+      <script src="{{url_for('static',filename='lform/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!--===============================================================================================-->
+      <script src="{{url_for('static',filename='lform/vendor/select2/select2.min.js')}}"></script>
+    <!--===============================================================================================-->
+      <script src="{{url_for('static',filename='lform/js/main.js')}}"></script>
+
+{%endblock main%}

@@ -1,0 +1,56 @@
+{% extends 'basiclayout.html'%} 
+{%block main%}
+	<!-- Stylesheets -->
+	
+	<link href="{{url_for('static',filename='account/common-css/bootstrap.css')}}" rel="stylesheet">
+	
+	<link href="{{url_for('static',filename='account/common-css/ionicons.css')}}" rel="stylesheet">
+	
+	<link href="{{url_for('static',filename='account/common-css/fluidbox.min.css')}}" rel="stylesheet">
+	
+	<link href="{{url_for('static',filename='account/01-cv-portfolio/css/styles.css')}}" rel="stylesheet">
+	
+	<link href="{{url_for('static',filename='account/01-cv-portfolio/css/responsive.css')}}" rel="stylesheet">
+
+    
+        <div class="container">
+            <div class="row" style="background-color: grey;">
+                <div class="col-md-1 col-lg-2"></div>
+                <div class="col-md-10 col-lg-8">
+                    <div class="intro">
+                        <div class="profile-img" style="border: 0.5px solid rgb(169, 166, 166);"><img src="{{profile_pic}}" alt=""></div>
+                        <h2><b>{{current_user.username}}</b></h2>
+                        <ul class="information margin-tb-30">
+                            <li><b>GENDER : </b>{{current_user.gender}}</li>
+                            <li><b>EMAIL : </b>{{current_user.email}}</li>
+                        </ul>
+                        <div>
+                            <a href="{{url_for('eform')}}"><button style="background-color: green;width: 100px;height: 30px;"><b>Edit Profile</b></button></a>
+                        </div>
+                    </div><!-- intro -->
+                </div><!-- col-sm-8 -->
+            </div><!-- row -->
+        </div><!-- container -->
+    
+    
+    
+    
+
+    <!-- SCIPTS -->
+	
+    <script src="{{url_for('static',filename='account/common-js/jquery-3.2.1.min.js')}}"></script>
+
+	<script src="{{url_for('static',filename='account/common-js/tether.min.js')}}"></script>
+	
+	<script src="{{url_for('static',filename='account/common-js/bootstrap.js')}}"></script>
+	
+	<script src="{{url_for('static',filename='account/common-js/isotope.pkgd.min.js')}}"></script>
+	
+	<script src="{{url_for('static',filename='account/common-js/jquery.waypoints.min.js')}}"></script>
+	
+	<script src="{{url_for('static',filename='account/common-js/progressbar.min.js')}}"></script>
+	
+	<script src="{{url_for('static',filename='account/common-js/jquery.fluidbox.min.js')}}"></script>
+	
+	<script src="{{url_for('static',filename='account/common-js/scripts.js')}}"></script>
+{%endblock main%} 

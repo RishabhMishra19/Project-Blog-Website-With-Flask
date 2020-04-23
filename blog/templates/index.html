@@ -1,0 +1,53 @@
+{% extends 'basiclayout.html'%}
+{%block main%}
+
+  <!-- Main Content -->
+  <div class="container"><p style="font-size: 2.3cm;font-weight: 900;text-align: center;">HOME</p>
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <a class="btn btn-primary float-right" href="{{url_for('create_post')}}">Create New Post</a>
+        <br><br>
+        {%for post in posts.items%}
+        <hr>
+        <img style="float:left;border-radius:50%;height:2cm;width:2cm;" src={{url_for('static',filename='/profile_image/'+post.author.image_file)}}>
+         
+        <div class="post-preview"style="margin-left:10px;">
+           <a href="{{url_for('apost',id=post.id)}}">
+            <h2 class="post-title"> 
+              {{post.title}} 
+            </h2>
+            <h4 class="post-subtitle">
+              {{post.content[:100]+'\n'+post.content[100:160]+'.............'}}
+            </h4>
+          </a>
+          <p class="post-meta">Posted by
+            {{post.author.username}}<br>on
+            {{post.date_posted}}</p>
+        </div>
+        
+        
+        <hr>
+
+        {%endfor%}
+        {% for page_num in posts.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2) %}
+          {% if page_num %}
+            {% if posts.page == page_num %}
+              <a class="btn btn-info mb-4" href={{url_for('index',page=page_num)}}>{{page_num}}</a>
+            {% else %}
+              <a class="btn btn-outline-info mb-4" href={{url_for('index',page=page_num)}}>{{page_num}}</a>
+            {% endif %}
+          {% else %}
+            ...
+          {% endif %}
+        {% endfor %}
+        
+        
+        <hr>
+        
+        
+      </div>
+    </div>
+  </div>
+{%endblock main%}
+
+  

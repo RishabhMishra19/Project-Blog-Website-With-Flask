@@ -1,0 +1,109 @@
+{% extends 'basiclayout.html'%}
+{%block main%}
+
+    <!-- Main Content -->
+  <!-- Icons font CSS-->
+  <link href="{{url_for('static',filename='rform/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
+  <link href="{{url_for('static',filename='rform/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
+  
+  <!-- Vendor CSS-->
+  <link href="{{url_for('static',filename='rform/vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
+  <link href="{{url_for('static',filename='rform/vendor/datepicker/daterangepicker.css')}}" rel="stylesheet" media="all">
+
+  <!-- Main CSS-->
+  <link href="{{url_for('static',filename='rform/css/main.css')}}" rel="stylesheet" media="all">
+  
+
+  
+      <div class="wrapper wrapper--w780">
+          <div class="card card-3">
+              <div class="card-heading"></div>
+              <div class="card-body">
+                  <h2 class="title"style="font-size: 1.3cm;color:#e00c0c;font-weight: 900;text-align: center;">Edit Profile</h2>
+                  <form method="POST" enctype="multipart/form-data">
+                      <div class="input-group">
+                          {%if form.username.errors%}
+                              {{form.username(class='form-control form-control-lg is-invalid')}}
+                              <div>
+                                  {%for error in form.username.errors%}
+                                      <span style="color: red;">{{error}}</span>
+                                  {%endfor%}
+                              </div>
+                          {%else%}
+                              {{form.username(class='input--style-3')}}
+                          {%endif%}
+                      </div> 
+                      
+                      <div class="input-group">
+                          <div class="rs-select2 js-select-simple select--no-search">
+                          {%if form.gender.errors%}
+                              {{form.gender(class='form-control form-control-lg is-invalid')}}
+                              <div>
+                                  {%for error in form.gender.errors%}
+                                      <span style="color: red;">{{error}}</span>
+                                  {%endfor%}
+                              </div>
+                          {%else%}
+                              {{form.gender(class='rs-select2 js-select-simple select--no-search')}}
+                          {%endif%}
+                          
+                              <div class="select-dropdown"></div>
+                          </div>
+                      </div> 
+                      <div class="input-group">
+                          {%if form.email.errors%}
+                              {{form.email(class='form-control form-control-lg is-invalid')}}
+                              <div>
+                                  {%for error in form.email.errors%}
+                                      <span style="color: red;">{{error}}</span>
+                                  {%endfor%}
+                              </div>
+                          {%else%}
+                              {{form.email(class='input--style-3')}}
+                          {%endif%}
+                      </div>
+                      <div class="input-group">
+                        <span class="title">Update Profle Pic</span>
+                        {%if form.picture.errors%}
+                            {{form.picture(class='form-control form-control-lg is-invalid')}}
+                            <div>
+                                {%for error in form.picture.errors%}
+                                    <span style="color: red;">{{error}}</span>
+                                {%endfor%}
+                            </div>
+                        {%else%}
+                            {{form.picture(class='input--style-3')}}
+                        {%endif%}
+                    </div>
+                      
+                      {{form.csrf_token}}<!--this is for web security-->
+                      <div class="p-t-10">
+                          {{form.submit(class="btn btn--pill btn--green")}}
+                      </div>
+                      <br><br><br>
+                      <div class="text-center w-full p-t-115" style="color: whitesmoke;">
+                          <span class="txt1">
+                             Reset Password?
+                          </span>
+              
+                          <a class="txt1 bo1 hov1" style="color: turquoise;" href="{{url_for('reset_request')}}">
+                            Click here							
+                          </a>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div> 
+  
+
+  <!-- Jquery JS-->
+  <script src="{{url_for('static',filename='rform/vendor/jquery/jquery.min.js')}}"></script>
+  <!-- Vendor JS-->
+  <script src="{{url_for('static',filename='rform/vendor/select2/select2.min.js')}}"></script>
+  <script src="{{url_for('static',filename='rform/vendor/datepicker/moment.min.js')}}"></script>
+  <script src="{{url_for('static',filename='rform/vendor/datepicker/daterangepicker.js')}}"></script>
+
+  <!-- Main JS-->
+  <script src="{{url_for('static',filename='rform/js/global.js')}}"></script>
+
+{%endblock main%}

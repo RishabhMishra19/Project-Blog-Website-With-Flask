@@ -1,0 +1,62 @@
+{% extends 'basiclayout.html'%}
+{%block main%}
+
+  <!-- Main Content -->
+  <div class="container">
+       
+    <div class="row">
+      
+      <div class="col-lg-8 col-md-10 mx-auto"><hr>
+        <img style="float:left;border-radius:50%;height:2cm;width:2cm;" src={{url_for('static',filename='/profile_image/'+post_data.author.image_file)}}>
+      
+          <p><h1>{{post_data.title}}</h1></p>
+          <p>posted by <b>{{post_data.author.username}}</b></p>
+          <hr>
+          <p>{{post_data.content}}</p>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <h1 style="margin-left: 20px;">comments</h1><hr>
+
+  <form method='POST'>
+
+    <div >
+      {%if form.comment.errors%}
+        {{form.comment(class='form-control form-control-lg is-invalid')}}
+        <div>
+          {%for error in form.comment.errors%}
+            <span style="color: red;">{{error}}</span>
+          {%endfor%}
+        </div>
+      {%else%}
+        {{form.comment(class='input100')}}
+      {%endif%}
+      
+    </div>
+    
+    {{form.csrf_token}}<!--this is for web security-->
+    <div >
+      {{form.submit(class="login100-form-btn")}}
+    </div>
+  </form>
+
+  {%for comment in post_comments %} 
+        <hr>
+        <img style="float:left;border-radius:50%;height:2cm;width:2cm;" src={{url_for('static',filename='/profile_image/'+user.query.filter_by(id=comment.user_id).first().image_file)}}>
+        
+            <h3 >
+              {{comment.comment}}
+            </h3>
+            
+          
+          <p class="post-meta">Commented by
+            {{comment.post_by}}<br>on
+            {{comment.date_posted}}</p>
+       
+        
+        <hr>
+
+        {%endfor%}
+
+{%endblock main%}
