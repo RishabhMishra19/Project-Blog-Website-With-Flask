@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
+from flask_migrate import Migrate
 from .constants import SQLALCHEMY_DATABASE_URI, APP_SECRET_KEY, EMAIL_PASS, EMAIL_USER
 
 app=Flask(__name__)
@@ -11,6 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 db=SQLAlchemy(app)
 with app.app_context():
     db.create_all()
+migrate = Migrate(app, db)
 bcrypt=Bcrypt(app)
 login_manager=LoginManager(app)
 login_manager.login_view='lform'#route function of login

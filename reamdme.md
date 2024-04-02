@@ -5,4 +5,7 @@ steps to run this project
 3. source venv/bin/activate (activate the newly created environment)
 4. pip install -r requirements.txt install all required libraries in activated environment
 5. update variables in blog/constants.py file if you want
-6. python3 run.py (run the project)
+6. flask --app run.py db init (to initialize db)
+7. flask --app run.py db migrate (to create initial tables)
+8. flask --app run.py db upgrade (to apply migrations)
+9. python3 run.py (run the project)
