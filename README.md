@@ -9,3 +9,5 @@ steps to run this project
 7. flask --app run.py db migrate (to create initial tables)
 8. flask --app run.py db upgrade (to apply migrations)
 9. python3 run.py (run the project)
+
+# My-Projects
