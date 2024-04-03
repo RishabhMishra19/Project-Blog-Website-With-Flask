@@ -16,16 +16,16 @@ class user(db.Model,UserMixin):
     image_file = db.Column(db.String(20), nullable=False,default='default.jpg')
     password=db.Column(db.String(20),nullable=False)
     posts=db.relationship('write_post',backref='author',lazy=True)#backref allowed us to access post columns
-    def get_reset_token(self,expires_sec=1800):
-        s=serializer(app.secret_key,expires_sec)
-        return s.dumps({'user_id':self.id}).decode('utf-8')
+    def get_reset_token(self):
+        s=serializer(app.config['SECRET_KEY'])
+        return s.dumps({'user_id':self.id})
     @staticmethod#telling python that not to expect self parameter here
-    def verify_reset_token(token):
+    def verify_reset_token(token, max_age = 1800):
         s=serializer(app.config['SECRET_KEY'])
         try:
-            user_id=s.loads(token)['user_id']
+            user_id=s.loads(token, max_age)['user_id']
         except:
-            return none
+            return None
         return user.query.get(user_id)
 
     def __repr__(self):

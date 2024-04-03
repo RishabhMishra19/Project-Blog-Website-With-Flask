@@ -24,6 +24,7 @@ class RegistrationForm(FlaskForm):
         if gender.data == 'Gender':
             raise ValidationError("Please select a Gender...")
 
+
     username=StringField('username',
                          validators=[DataRequired(),Length(min=2,max=20)],render_kw={"placeholder":'Username'})
     email = StringField('email',
